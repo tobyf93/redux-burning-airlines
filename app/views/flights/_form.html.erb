@@ -24,12 +24,8 @@
     <%= f.datetime_select :departure %>
   </div>
   <div class="field">
-    <%= f.label :arrival %><br>
-    <%= f.datetime_select :arrival %>
-  </div>
-  <div class="field">
     <%= f.label :plane_id %><br>
-    <%= f.number_field :plane_id %>
+    <%= f.collection_select :plane_id, Plane.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>

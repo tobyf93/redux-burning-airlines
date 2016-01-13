@@ -4,12 +4,18 @@ class FlightsController < ApplicationController
   # GET /flights
   # GET /flights.json
   def index
-    @flights = Flight.all
+    if params[:plane_id]
+      @flights = Flight.where :plane_id => params[:plane_id]
+    else
+      @flights = Flight.all
+    end
+    render :json => @flights
   end
 
   # GET /flights/1
   # GET /flights/1.json
   def show
+    @reservations = Reservation.where :flight_id => @flight.id
   end
 
   # GET /flights/new
@@ -35,6 +41,21 @@ class FlightsController < ApplicationController
         format.json { render json: @flight.errors, status: :unprocessable_entity }
       end
     end
+
+    rows = 5
+    columns = 5
+
+    for row in 1..rows
+      for column in 1..columns
+        @reservation = Reservation.new
+        @reservation.row = row
+        @reservation.column = column
+        @reservation.user_id = nil
+        @reservation.save
+        @flight.reservations << @reservation
+      end
+    end
+
   end
 
   # PATCH/PUT /flights/1
@@ -69,6 +90,6 @@ class FlightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flight_params
-      params.require(:flight).permit(:origin, :destination, :departure, :arrival, :plane_id)
+      params.require(:flight).permit(:origin, :destination, :date, :plane_id)
     end
 end

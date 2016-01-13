@@ -11,13 +11,8 @@
 </p>
 
 <p>
-  <strong>Departure:</strong>
+  <strong>Date:</strong>
   <%= @flight.departure %>
-</p>
-
-<p>
-  <strong>Arrival:</strong>
-  <%= @flight.arrival %>
 </p>
 
 <p>
@@ -25,5 +20,18 @@
   <%= @flight.plane_id %>
 </p>
 
+<p>
+  <strong>Reservations:</strong>
+  <% i = 1 %>
+  <% @reservations.each do |rsvp| %>
+    <div><%= "Reservation #{i}: " %><% i += 1 %>
+      <td><%= "Row: #{rsvp.row}" %></td>
+      <td><%= "Col: #{rsvp.column}" %></td>
+      <td><%= link_to 'Edit', edit_reservation_path(rsvp) %></td>
+    </div>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_flight_path(@flight) %> |
+<%= link_to 'New Reservation', new_reservation_path %> |
 <%= link_to 'Back', flights_path %>

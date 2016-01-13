@@ -16,4 +16,5 @@
 //= require react_ujs
 //= require components
 //= require bootstrap
+//= require moment
 //= require pages

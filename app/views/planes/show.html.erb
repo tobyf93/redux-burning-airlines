@@ -15,5 +15,19 @@
   <%= @plane.name %>
 </p>
 
+<p>
+  <strong>Flights:</strong>
+  <% i = 1 %>
+  <% @flights.each do |flight| %>
+    <div><%= "Flight #{i}: " %><% i += 1 %>
+      <td><%= flight.origin %></td>
+      <td><%= "to #{flight.destination}" %></td>
+      <td><%= flight.date %></td>
+      <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
+    </div>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_plane_path(@plane) %> |
+<%= link_to 'New Flight', new_flight_path %> |
 <%= link_to 'Back', planes_path %>

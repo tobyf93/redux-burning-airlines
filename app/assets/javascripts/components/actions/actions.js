@@ -1,3 +1,20 @@
+export const UPDATE_FLIGHTS = 'UPDATE_FLIGHTS';
+
+export function updateFlights() {
+  return dispatch => {
+    $.get('/flights', data => {
+      dispatch(_updateFlights(data));
+    });
+  };
+}
+
+function _updateFlights(flights) {
+  return {
+    type: UPDATE_FLIGHTS,
+    flights: flights
+  };
+}
+
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
 export const SET_COUNTER = 'SET_COUNTER';

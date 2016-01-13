@@ -1,16 +1,14 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import BurningAirlines from '../components/BurningAirlines';
-import * as CounterActions from '../actions/counter';
+import * as Actions from '../actions/actions';
 
 function mapStateToProps(state) {
-  return {
-    counter: state.counter
-  };
+  return state;
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
+  return bindActionCreators(Actions, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BurningAirlines);

@@ -10,6 +10,7 @@ class PlanesController < ApplicationController
   # GET /planes/1
   # GET /planes/1.json
   def show
+    @flights = Flight.where :plane_id => @plane.id
   end
 
   # GET /planes/new

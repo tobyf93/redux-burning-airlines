@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+import flights from './flights';
 
 const rootReducer = combineReducers({
-  counter
+  flights
 });
 
 export default rootReducer;
