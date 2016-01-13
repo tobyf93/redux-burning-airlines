@@ -3,13 +3,13 @@
 one:
   origin: MyString
   destination: MyString
-  departure: 2016-01-13 11:29:54
-  arrival: 2016-01-13 11:29:54
+  departure: 2016-01-13 14:31:17
+  arrival: 2016-01-13 14:31:17
   plane_id: 1
 
 two:
   origin: MyString
   destination: MyString
-  departure: 2016-01-13 11:29:54
-  arrival: 2016-01-13 11:29:54
+  departure: 2016-01-13 14:31:17
+  arrival: 2016-01-13 14:31:17
   plane_id: 1

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root :to => 'welcome#index'
+  resources :flights
+  resources :planes
+  root :to => 'pages#app'
 
   resources :planes do
     resources :flights do
@@ -10,9 +12,7 @@ Rails.application.routes.draw do
   resources :reservations
   resources :flights
   resources :users
-  root :to => 'pages#app'
 
-  get '/signup' => 'pages#signup'
   get '/login' => 'pages#login'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
