@@ -1,4 +1,5 @@
 export const UPDATE_FLIGHTS = 'UPDATE_FLIGHTS';
+export const UPDATE_FILTER = 'UPDATE_FILTER';
 
 export function updateFlights() {
   return dispatch => {
@@ -15,45 +16,12 @@ function _updateFlights(flights) {
   };
 }
 
-export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
-export const DECREMENT_COUNTER = 'DECREMENT_COUNTER';
-export const SET_COUNTER = 'SET_COUNTER';
-
-export function setCounter(counter) {
-  return {
-    type: SET_COUNTER,
-    counter: counter
-  };
-}
-
-export function increment() {
-  return {
-    type: INCREMENT_COUNTER
-  };
-}
-
-export function decrement() {
-  return {
-    type: DECREMENT_COUNTER
-  };
-}
-
-export function incrementIfOdd() {
-  return (dispatch, getState) => {
-    const { counter } = getState();
-
-    if (counter % 2 === 0) {
-      return;
-    }
-
-    dispatch(increment());
-  };
-}
-
-export function incrementAsync(delay = 1000) {
+export function updateFilter(field, value) {
   return dispatch => {
-    setTimeout(() => {
-      dispatch(increment());
-    }, delay);
+    dispatch({
+      type: UPDATE_FILTER,
+      field,
+      value
+    });
   };
 }

@@ -22,7 +22,7 @@
     <div><%= "Flight #{i}: " %><% i += 1 %>
       <td><%= flight.origin %></td>
       <td><%= "to #{flight.destination}" %></td>
-      <td><%= flight.date %></td>
+      <td><%= flight.departure %></td>
       <td><%= link_to 'Edit', edit_flight_path(flight) %></td>
     </div>
   <% end %>
