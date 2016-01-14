@@ -17,6 +17,7 @@ class FlightsController < ApplicationController
   # GET /flights/1.json
   def show
     @reservations = Reservation.where :flight_id => @flight.id
+    render :json => @reservations
   end
 
   # GET /flights/new

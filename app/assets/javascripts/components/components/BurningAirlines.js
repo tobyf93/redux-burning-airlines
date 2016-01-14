@@ -1,9 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import Header from './header';
+import Header from './Header';
 
 class BurningAirlines extends Component {
   componentDidMount() {
     this.props.updateFlights();
+  }
+
+  onClick(e) {
+    this.props.showFlight(e.target.parentElement.id);
   }
 
   render() {
@@ -28,7 +32,10 @@ class BurningAirlines extends Component {
       }
 
       flights.push(
-        <tr key={i}>
+        <tr
+          id={flight.id}
+          key={i}
+          onClick={this.onClick.bind(this)}>
           <td>{plane}</td>
           <td>{flight.origin}</td>
           <td>{flight.destination}</td>
