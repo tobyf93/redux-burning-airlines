@@ -6,9 +6,11 @@ class BurningAirlines extends Component {
   render() {
     var body = (
       <Table
+        filter={this.props.filter}
         flights={this.props.flights}
         showFlight={this.props.showFlight}
-        updateFlights={this.props.updateFlights}/>
+        updateFlights={this.props.updateFlights}
+        updateFilter={this.props.updateFilter}/>
     );
 
     if (this.props.reservations.length) {

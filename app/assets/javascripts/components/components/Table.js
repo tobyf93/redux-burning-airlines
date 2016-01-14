@@ -19,11 +19,23 @@ export default class Table extends Component {
         plane = flight.plane.name;
       }
 
+      // Calculate remaining seats for flights
+      var seatsAvailable = 0;
+      flight.reservations.forEach(function(reservation) {
+        if (reservation.user_id) {
+          seatsAvailable++;
+        }
+      });
+
       for (var key in this.props.filter) {
         var re = new RegExp(this.props.filter[key], 'i');
 
         if (key === 'plane' && this.props.filter[key]) {
           if (!plane.match(re)) {
+            return;
+          }
+        } else if (key === 'availabilities') {
+          if (this.props.filter[key] && parseInt(this.props.filter[key]) !== seatsAvailable) {
             return;
           }
         } else if (this.props.filter[key] && !flight[key].match(re)) {
@@ -41,6 +53,7 @@ export default class Table extends Component {
           <td>{flight.destination}</td>
           <td>{moment(flight.departure).format('Do MMMM YYYY')}</td>
           <td>{moment(flight.arrival).format('Do MMMM YYYY')}</td>
+          <td>{seatsAvailable}</td>
         </tr>
       );
     }.bind(this));

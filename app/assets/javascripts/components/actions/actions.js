@@ -37,8 +37,18 @@ function _showFlight(seats) {
 
 export function showFlight(id) {
   return dispatch => {
-    $.get(`/flights/${id}.json`, data => {
+    $.get(`/flights/${id}.json`, function(data) {
       dispatch(_showFlight(data));
+    });
+  };
+}
+
+export function updateFilter(field, value) {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_FILTER,
+      field,
+      value
     });
   };
 }

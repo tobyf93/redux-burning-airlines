@@ -31,7 +31,10 @@ export default class Header extends Component {
                 placeholder="Arrival"
                 onChange={this.onChange.bind(this)}
                 ></input></th>
-          <th>Availabilities</th>
+          <th><input
+                placeholder="Availabilities"
+                onChange={this.onChange.bind(this)}
+                ></input></th>
         </tr>
       </thead>
     );

@@ -10,7 +10,7 @@ class FlightsController < ApplicationController
       @flights = Flight.all
     end
     # render @flights.as_json( :include => :plane )
-    render :json => @flights.to_json(:include => [:plane])
+    render :json => @flights.to_json(:include => [:plane, :reservations])
   end
 
   # GET /flights/1
