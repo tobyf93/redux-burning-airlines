@@ -1,0 +1,28 @@
+.reservations {
+  width: 582px;
+  margin: 0 auto 15px auto;
+  padding: 15px;
+  border: 6px solid black;
+  border-radius: 25px;
+  border-color: grey;
+}
+
+.reservation {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  border-radius: 25px;
+}
+
+.reservation:hover,
+.reservation.booked {
+  background-color: grey;
+  opacity: 0.25;
+  cursor: pointer;
+}
+
+.reservation:nth-child(5n) {
+  margin-right: 0;
+}

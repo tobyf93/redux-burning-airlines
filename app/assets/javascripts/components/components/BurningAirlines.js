@@ -1,62 +1,31 @@
 import React, { Component, PropTypes } from 'react';
-import Header from './Header';
+import Table from './Table';
+import Reservations from './Reservations';
 
 class BurningAirlines extends Component {
-  componentDidMount() {
-    this.props.updateFlights();
-  }
-
-  onClick(e) {
-    this.props.showFlight(e.target.parentElement.id);
-  }
-
   render() {
-    var flights = [];
+    var body = (
+      <Table
+        flights={this.props.flights}
+        showFlight={this.props.showFlight}
+        updateFlights={this.props.updateFlights}/>
+    );
 
-    this.props.flights.forEach(function(flight, i) {
-      var plane = 'Unknown';
-      if (flight.plane) {
-        plane = flight.plane.name;
-      }
-
-      for (var key in this.props.filter) {
-        var re = new RegExp(this.props.filter[key], 'i');
-
-        if (key === 'plane' && this.props.filter[key]) {
-          if (!plane.match(re)) {
-            return;
-          }
-        } else if (this.props.filter[key] && !flight[key].match(re)) {
-          return;
-        }
-      }
-
-      flights.push(
-        <tr
-          id={flight.id}
-          key={i}
-          onClick={this.onClick.bind(this)}>
-          <td>{plane}</td>
-          <td>{flight.origin}</td>
-          <td>{flight.destination}</td>
-          <td>{moment(flight.departure).format('Do MMMM YYYY')}</td>
-          <td>{moment(flight.arrival).format('Do MMMM YYYY')}</td>
-        </tr>
+    if (this.props.reservations.length) {
+      body = (
+        <Reservations
+          reservations={this.props.reservations}
+          showFlight={this.props.showFlight}
+          />
       );
-    }.bind(this));
+    }
 
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-12">
             <h1 className="text-center">Burning Airlines</h1>
-            <table className="table table-stripped">
-              <Header
-                updateFilter={this.props.updateFilter}/>
-              <tbody>
-                {flights}
-              </tbody>
-            </table>
+            {body}
           </div>
         </div>
       </div>

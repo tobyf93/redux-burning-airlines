@@ -1,6 +1,7 @@
 export const UPDATE_FLIGHTS = 'UPDATE_FLIGHTS';
 export const UPDATE_FILTER = 'UPDATE_FILTER';
 export const SHOW_FLIGHT = 'SHOW_FLIGHT';
+export const BOOK_FLIGHT = 'BOOK_FLIGHT';
 
 function _updateFlights(flights) {
   return {
@@ -35,7 +36,6 @@ function _showFlight(seats) {
 }
 
 export function showFlight(id) {
-  console.log(id);
   return dispatch => {
     $.get(`/flights/${id}.json`, data => {
       dispatch(_showFlight(data));
