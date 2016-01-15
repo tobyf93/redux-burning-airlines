@@ -9,12 +9,9 @@ git clone https://github.com/suzan2go/react-rails-redux-sample.git
 cd react-rails-redux-sample
 bundle install
 npm install
+rake db:migrate
 ```
 
 ## Technical Stuff
-
 * Live updates using AJAX long-polling (every second) to a Rails API
-
-* Truely real-time updates available for browsers that support websockets
-
 * SPA created using React.js and Redux
