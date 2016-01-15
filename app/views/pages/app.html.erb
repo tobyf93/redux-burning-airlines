@@ -1,5 +1,7 @@
 <script>
-  var userID = <%= @current_user.id %>;
+  var app = {};
+  app.userID = <%= @current_user.id %>;
+  app.userName = '<%= @current_user.username %>';
 </script>
 
 <%= react_component('Root', {counter: 10}, {prerender: true} ) %>

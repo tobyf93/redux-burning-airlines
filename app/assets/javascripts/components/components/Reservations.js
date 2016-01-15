@@ -13,7 +13,7 @@ export default class Reservations extends Component {
       url: `/reservations/${$(e.target).attr('data')}`,
       data: {
         '_method': 'PATCH',
-        user_id: userID
+        user_id: app.userID
       },
       dataType: 'json'
     });
@@ -24,9 +24,11 @@ export default class Reservations extends Component {
 
     this.props.reservations.forEach(function(reservation, i) {
       var className = 'reservation';
+      var content = 'FREE';
 
       if (reservation.user_id) {
         className += ' booked';
+        content = app.userName;
       }
 
       reservations.push(
@@ -35,7 +37,9 @@ export default class Reservations extends Component {
           data={reservation.id}
           className={className}
           onClick={this.onClick.bind(this)}
-          ></div>
+          >
+            {content}
+          </div>
       );
     }.bind(this));
 
