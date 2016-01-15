@@ -5,12 +5,15 @@ import Reservations from './Reservations';
 class BurningAirlines extends Component {
   render() {
     var body = (
-      <Table
-        filter={this.props.filter}
-        flights={this.props.flights}
-        showFlight={this.props.showFlight}
-        updateFlights={this.props.updateFlights}
-        updateFilter={this.props.updateFilter}/>
+      <div>
+        <Table
+          filter={this.props.filter}
+          flights={this.props.flights}
+          showFlight={this.props.showFlight}
+          updateFlights={this.props.updateFlights}
+          updateFilter={this.props.updateFilter}/>
+        <a className="btn btn-success" href="/planes" role="button">Create More Flights...</a>
+      </div>
     );
 
     if (this.props.reservations.length) {
@@ -18,6 +21,7 @@ class BurningAirlines extends Component {
         <Reservations
           reservations={this.props.reservations}
           showFlight={this.props.showFlight}
+          clearReservations={this.props.clearReservations}
           />
       );
     }

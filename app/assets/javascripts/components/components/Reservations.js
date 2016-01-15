@@ -2,12 +2,16 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Reservations extends Component {
   componentDidMount() {
-    setInterval(function() {
+    this.reservationPoll = setInterval(function() {
       this.props.showFlight(this.props.reservations[0].flight_id);
     }.bind(this), 1000);
   }
 
-  onClick(e) {
+  componentWillUnmount() {
+    clearInterval(this.reservationPoll);
+  }
+
+  handleReservationClick(e) {
     $.ajax({
       type: "POST",
       url: `/reservations/${$(e.target).attr('data')}`,
@@ -17,6 +21,10 @@ export default class Reservations extends Component {
       },
       dataType: 'json'
     });
+  }
+
+  handleButtonClick() {
+    this.props.clearReservations();
   }
 
   render() {
@@ -36,7 +44,7 @@ export default class Reservations extends Component {
           key={i}
           data={reservation.id}
           className={className}
-          onClick={this.onClick.bind(this)}
+          onClick={this.handleReservationClick.bind(this)}
           >
             {content}
           </div>
@@ -44,8 +52,13 @@ export default class Reservations extends Component {
     }.bind(this));
 
     return (
-      <div className="reservations">
-        {reservations}
+      <div>
+        <div className="reservations">
+          {reservations}
+        </div>
+        <button
+          onClick={this.handleButtonClick.bind(this)}
+          className="btn btn-warning center-block" type="submit">Back To Flight List</button>
       </div>
     );
   }

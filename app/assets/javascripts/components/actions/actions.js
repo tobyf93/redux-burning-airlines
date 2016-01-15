@@ -2,6 +2,7 @@ export const UPDATE_FLIGHTS = 'UPDATE_FLIGHTS';
 export const UPDATE_FILTER = 'UPDATE_FILTER';
 export const SHOW_FLIGHT = 'SHOW_FLIGHT';
 export const BOOK_FLIGHT = 'BOOK_FLIGHT';
+export const CLEAR_RESERVATIONS = 'CLEAR_RESERVATIONS';
 
 function _updateFlights(flights) {
   return {
@@ -49,6 +50,14 @@ export function updateFilter(field, value) {
       type: UPDATE_FILTER,
       field,
       value
+    });
+  };
+}
+
+export function clearReservations() {
+  return dispatch => {
+    dispatch({
+      type: CLEAR_RESERVATIONS
     });
   };
 }

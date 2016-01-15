@@ -3,7 +3,13 @@ import Header from './Header';
 
 export default class Table extends Component {
   componentDidMount() {
-    this.props.updateFlights();
+    this.flightPoll = setInterval(function() {
+      this.props.updateFlights();
+    }.bind(this), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.flightPoll);
   }
 
   onClick(e) {
@@ -22,7 +28,7 @@ export default class Table extends Component {
       // Calculate remaining seats for flights
       var seatsAvailable = 0;
       flight.reservations.forEach(function(reservation) {
-        if (reservation.user_id) {
+        if (!reservation.user_id) {
           seatsAvailable++;
         }
       });
@@ -43,6 +49,17 @@ export default class Table extends Component {
         }
       }
 
+      var label = '';
+      var className = 'label';
+
+      if (seatsAvailable) {
+        label = 'FINAL CALL';
+        className += ' label-primary';
+      } else {
+        label = 'DEPARTED';
+        className += ' label-danger';
+      }
+
       flights.push(
         <tr
           id={flight.id}
@@ -53,7 +70,7 @@ export default class Table extends Component {
           <td>{flight.destination}</td>
           <td>{moment(flight.departure).format('Do MMMM YYYY')}</td>
           <td>{moment(flight.arrival).format('Do MMMM YYYY')}</td>
-          <td>{seatsAvailable}</td>
+          <td>{seatsAvailable} <span className={className}>{label}</span></td>
         </tr>
       );
     }.bind(this));

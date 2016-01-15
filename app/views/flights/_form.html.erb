@@ -24,6 +24,10 @@
     <%= f.datetime_select :departure %>
   </div>
   <div class="field">
+    <%= f.label :arrival %><br>
+    <%= f.datetime_select :arrival %>
+  </div>
+  <div class="field">
     <%= f.label :plane_id %><br>
     <%= f.collection_select :plane_id, Plane.all, :id, :name %>
   </div>
