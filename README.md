@@ -5,7 +5,7 @@ Booking system for airline services. Users are able to view/book seats through a
 ## Installation
 
 ```
-git clone https://github.com/suzan2go/react-rails-redux-sample.git
+git clone https://github.com/tobyf93/redux-burning-airlines.git
 cd react-rails-redux-sample
 bundle install
 npm install
