@@ -1,4 +1,5 @@
-# Overview
+# redux-burning-airlines
+## Overview
 
 Booking system for airline services. Users are able to view/book seats through a SPA and watch them become unavailable in real-time. Planes and flights are created using a Ruby on Rails CRUD.
 
